@@ -5,6 +5,7 @@ import java.io.*;
 public class JsonSerializer {
     private final ObjectOutputStream objectOutputStream;
     private final ObjectInputStream objectInputStream;
+    private Class aClass;
 
     public JsonSerializer(String source) throws IOException {
         FileOutputStream outputStream = new FileOutputStream(source);
@@ -17,12 +18,13 @@ public class JsonSerializer {
         Gson gson = new Gson();
         String json = gson.toJson(object);
         objectOutputStream.writeObject(json);
+        aClass = object.getClass();
     }
 
     public Serializable deserialize() throws IOException, ClassNotFoundException {
         Gson gson = new Gson();
         String json = (String)objectInputStream.readObject();
-        return gson.fromJson(json, MyClass.class);
+        return gson.fromJson(json, aClass.getClass());
     }
 
     public void closeStream() throws IOException {
