@@ -27,5 +27,6 @@ public class JsonSerializer {
 
     public void closeStream() throws IOException {
         objectOutputStream.close();
+        objectInputStream.close();
     }
 }
