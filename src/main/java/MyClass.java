@@ -1,8 +1,15 @@
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.io.Serializable;
 
+@XmlRootElement
 public class MyClass implements Serializable {
     private int myInt;
     private String myString;
+
+    public MyClass() {
+
+    }
 
     public MyClass(int myInt, String myString) {
         this.myInt = myInt;
@@ -19,6 +26,6 @@ public class MyClass implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString();
+        return myString + myInt;
     }
 }
