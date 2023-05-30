@@ -3,8 +3,8 @@ import com.google.gson.Gson;
 import java.io.*;
 
 public class JsonSerializer {
-    private ObjectOutputStream objectOutputStream;
-    private ObjectInputStream objectInputStream;
+    private final ObjectOutputStream objectOutputStream;
+    private final ObjectInputStream objectInputStream;
 
     public JsonSerializer(String source) throws IOException {
         FileOutputStream outputStream = new FileOutputStream(source);
